@@ -415,6 +415,13 @@ html[data-theme="dark"] .ld-chip{color:color-mix(in srgb,var(--a) 55%,#fff)}
 .comic img{display:block; width:100%; height:auto; border-radius:16px; border:1px solid var(--line); box-shadow:var(--shadow); cursor:zoom-in; background:#fff}
 .comic-lb{position:fixed; inset:0; z-index:200; background:rgba(10,8,20,.82); display:flex; align-items:center; justify-content:center; padding:16px; cursor:zoom-out; overflow:auto}
 .comic-lb img{max-width:100%; max-height:96vh; width:auto; height:auto; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.5)}
+
+/* tutorial question text (added) */
+.tutq{line-height:1.6}
+.tutq .scroller{margin:10px 0}
+.tutq table.tutq-t{width:auto; min-width:60%; font-size:13px}
+.tutq table.tutq-t th,.tutq table.tutq-t td{padding:5px 12px; text-align:center}
+.tutq table.tutq-t th{text-transform:none; letter-spacing:0; font-family:var(--body); font-size:12.5px; color:var(--ink); font-weight:700; vertical-align:bottom}
 </style>
 </head>
 <body class="landing">
@@ -5501,8 +5508,8 @@ renderQuiz('all');
 
 /* ================= 8 TUTORIAL ================= */
 const TUT=[
- {n:'12.9-2',t:'Leaching a soybean slurry in a single stage',
-  g:'100 kg of flaked-soybean slurry = 75 kg inert solids + 25 kg of solution that is 10 wt% oil, 90 wt% hexane. Contacted with 100 kg of pure hexane in one stage. Outlet underflow holds N = 1.5 kg insoluble solid/kg solution. Find the amounts and compositions of V₁ and L₁.',
+ {n:'12.9-2',t:"Leaching a Soybean Slurry in a Single Stage",
+  g:"A slurry of flaked soybeans weighing a total of 100 kg contains 75 kg of inert solids and 25 kg of solution with 10wt% oil and 90wt% of solvent hexane. This slurry is contacted with 100 kg of pure hexane in a single stage so that the value of N for the outlet underflow is 1.5 kg insoluble solid/kg solution retained. Calculate the amounts and compositions of the overflow V<sub>1<\/sub> and the underflow L<sub>1<\/sub> leaving the stage",
   s:'Careful — the feed already contains solvent, so L₀ is the 25 kg of <i>solution</i> (not 100 kg) and y<sub>A0</sub> = 0.10, not 1.0. Everything else is exactly §4.2.',
   w:'<div class="eq">L₀ = 25 kg soln · y<sub>A0</sub> = 0.10 · B = 75 kg · N₀ = 75/25 = 3.0</div>'+
      '<div class="eq" style="margin-top:8px">V₂ = 100 kg · x<sub>A2</sub> = 0</div>'+
@@ -5512,8 +5519,8 @@ const TUT=[
      '<div class="eq" style="margin-top:8px">L₁ = B/N₁ = 75/1.5 = <b>50 kg soln</b> · V₁ = 125 − 50 = <b>75 kg</b></div>'+
      '<p class="small muted" style="margin-top:10px">Ideal stage → vertical tie line → y<sub>A1</sub> = x<sub>A1</sub> = 0.020.</p>',
   a:'V₁ = 75 kg at 2.0 wt% oil (1.5 kg oil, 73.5 kg hexane). L₁ = 50 kg solution at y<sub>A1</sub> = 0.020 (1.0 kg oil, 49 kg hexane) plus 75 kg inert solid.'},
- {n:'12.10-1',t:'Constant underflow in leaching oil from meal',
-  g:'Same conditions as worked example 12.10-1, but assume constant underflow, N = 1.85 kg solid/kg solution. Find the exit flows, compositions and number of stages, then compare with the variable-underflow answer.',
+ {n:'12.10-1',t:"Constant Underflow in Leaching Oil from Meal",
+  g:"Use the same conditions as given in Example 12.10-1, but assume constant underflow of <i>N<\/i> = 1.85 kg solid/kg solution. Calculate the exit flows and compositions and the number of stages required. Compare with Example 12.10-1.",
   s:'Constant N means the underflow line is horizontal, so L<sub>N</sub> follows straight from B/N — no ray-from-the-origin construction needed. Then use the same overall balances and the same Δ-point stepping.',
   w:'<div class="eq">L<sub>N</sub> = B/N = 2000/1.85 = <b>1081 kg soln/h</b></div>'+
      '<div class="eq" style="margin-top:8px">y<sub>AN</sub> = 120/1081 = <b>0.111</b></div>'+
@@ -5521,16 +5528,16 @@ const TUT=[
      '<div class="eq" style="margin-top:8px">A balance: 820 − 120 = 700 kg oil in V₁ → x<sub>A1</sub> ≈ 0.62–0.64</div>'+
      '<p class="small muted" style="margin-top:10px">Step off with Δ exactly as in §5.4, but against a horizontal N = 1.85 line.</p>',
   a:'y<sub>AN</sub> = 0.111, x<sub>A1</sub> = 0.623, <b>4.3 stages</b> — more than the 3.9 of the variable-underflow case, because the solids now carry more solution (and more oil) out at every stage.'},
- {n:'12.10-2',t:'Effect of less solvent',
-  g:'Same as example 12.10-1, but the inlet fresh solvent is cut 10% to 1179 kg benzene + 18 kg oil per hour. How many stages are now needed?',
+ {n:'12.10-2',t:"Effect of Less Solvents Flow in Leaching Oil from Meal",
+  g:"Use the same conditions as given in Example 12.10.1, but the inlet fresh solvent-mixture flowrate per hour is decreased by 10% to 1179 kg benzene and 18 kg of oil. Calculate the number of stages needed.",
   s:'L₀, B and the 120 kg oil spec are unchanged, so L<sub>N</sub> is unchanged. Only V<sub>N+1</sub>, M, V₁ and therefore Δ move. Expect a richer overflow but a harder separation.',
   w:'<div class="eq">V<sub>N+1</sub> = 1197 kg/h · x<sub>AN+1</sub> = 18/1197 = 0.0150</div>'+
      '<div class="eq" style="margin-top:8px">M = 850 + 1197 = 2047 kg/h · x<sub>AM</sub> = 0.400</div>'+
      '<div class="eq" style="margin-top:8px">L<sub>N</sub> = 2000/1.95 = 1026 kg/h · V₁ = 1021 kg/h · x<sub>A1</sub> ≈ 0.68</div>'+
      '<p class="small muted" style="margin-top:10px">The new Δ lies further left and lower, so the fan of lines is tighter and each step removes less oil.</p>',
   a:'About <b>5 stages</b> (≈5.2 by construction) against 3.9 before. Trading solvent for stages is the classic leaching design compromise — 10% less solvent costs you more than one extra vessel.'},
- {n:'12.10-3',t:'Countercurrent multistage washing of ore',
-  g:'Per hour: 10 000 kg inert gangue B, 1200 kg CuSO₄ (A) and 400 kg water (C). Pure water leaches the CuSO₄. Exit wash solution is 92 wt% water, 8 wt% CuSO₄, and 95% of the CuSO₄ is recovered. Constant underflow N = 0.5 kg gangue/kg solution. Find the number of stages.',
+ {n:'12.10-3',t:"Countercurrent Multistage Washing of Ore",
+  g:"A treated ore containing inert solid gangue and copper sulfate is to be leached in a countercurrent multistage extractor using pure water to leach the CuSO<sub>4<\/sub>. The solid charge rate per hour consists 10 000 kg of inert gangue (<i>B<\/i>), 1200 kg of CuSO<sub>4<\/sub> (solute <i>A<\/i>), and 400 kg of water (<i>C<\/i>). The exit wash solution is to contain 92 wt % water and 8 wt % CuSO<sub>4<\/sub>. A total of 95 % of the CuSO<sub>4<\/sub> in the inlet ore is to be recovered. The underflow is constant at <i>N<\/i> = 0.5 kg inert gangue solid/kg aqueous solution. Calculate the number of stages required.",
   s:'This is a washing problem, so the valuable A leaves in the overflow. Start from the recovery spec: it fixes the CuSO₄ split, and therefore both exit streams, before any drawing happens.',
   w:'<div class="eq">L<sub>N</sub> = B/N = 10 000/0.5 = <b>20 000 kg soln/h</b></div>'+
      '<div class="eq" style="margin-top:8px">A recovered = 0.95(1200) = 1140 kg → A left = 60 kg</div>'+
@@ -5538,8 +5545,8 @@ const TUT=[
      '<div class="eq" style="margin-top:8px">V₁ = 1140/0.08 = <b>14 250 kg/h</b></div>'+
      '<div class="eq" style="margin-top:8px">L₀ = 1200 + 400 = 1600 → V<sub>N+1</sub> = 34 250 − 1600 = 32 650 kg water/h</div>',
   a:'<b>9 stages</b>, with L<sub>N</sub> = 20 000 kg/h at y<sub>AN</sub> = 0.0030 and V₁ = 14 250 kg/h. Deep washing to 95% recovery is expensive in stages because the driving force collapses at the dilute end.'},
- {n:'12.10-4',t:'Countercurrent leaching of halibut livers',
-  g:'1000 kg/h of fresh livers containing 25.7 wt% oil is extracted with pure ethyl ether to remove 95% of the oil. The final overflow is 70 wt% oil. Retention data (N vs y_A): 4.88/0 · 3.50/0.2 · 2.47/0.4 · 1.67/0.6 · 1.39/0.81. Find exit streams and theoretical stages.',
+ {n:'12.10-4',t:"Countercurrent Multistage Leaching of Halibut Livers",
+  g:"Fresh halibut livers containing 25.7 wt % oil are to be extracted with pure ethyl ether to remove 95% of the oil in a countercurrent multistage leaching process. The feed rate is 1000 kg of fresh livers per hour. The final exit overflow solution is to contain 70 wt % oil. Calculate the amounts and compositions of the exit streams and the total number of theoretical stages. The retention of solution by the inert solids (oil-free liver) of the liver varies as follows (C1), where <i>N<\/i> is kg inert solid/kg solution retained and <i>y<sub>A<\/sub><\/i> is kg oil/kg solution:<div class=\"scroller\"><table class=\"tutq-t\"><tr><th><i>N<\/i><\/th><th><i>y<sub>A<\/sub><\/i><\/th><th><i>N<\/i><\/th><th><i>y<sub>A<\/sub><\/i><\/th><th><i>N<\/i><\/th><th><i>y<sub>A<\/sub><\/i><\/th><\/tr><tr><td>4.88<\/td><td>0<\/td><td>2.47<\/td><td>0.4<\/td><td>1.39<\/td><td>0.81<\/td><\/tr><tr><td>3.50<\/td><td>0.2<\/td><td>1.67<\/td><td>0.6<\/td><td><\/td><td><\/td><\/tr><\/table><\/div>",
   s:'Variable underflow, so plot the retention curve first. The feed carries no solvent, so y<sub>A0</sub> = 1.0. Fix L<sub>N</sub> with the ray N/y = kg inert/kg oil remaining.',
   w:'<div class="eq">Oil = 257 kg/h · inert B = 743 kg/h · L₀ = 257 kg soln, y<sub>A0</sub> = 1.0, N₀ = 2.89</div>'+
      '<div class="eq" style="margin-top:8px">Oil out in overflow = 0.95(257) = 244.2 → V₁ = 244.2/0.70 = <b>349 kg/h</b></div>'+
@@ -5551,7 +5558,7 @@ const TUT=[
 $('#tutBox').innerHTML=TUT.map((t,i)=>
  '<div class="acc"><div class="acch"><span class="idx">'+t.n+'</span>'+t.t+'<span class="plus">+</span></div>'+
  '<div class="accb"><div class="pad">'+
- '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Given</span><p class="small" style="margin-top:8px; color:var(--ink)">'+t.g+'</p></div>'+
+ '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Question</span><div class="small tutq" style="margin-top:8px; color:var(--ink)">'+t.g+'</div></div>'+
  '<div class="note" style="margin-bottom:12px"><b>Strategy:</b> '+t.s+'</div>'+
  '<button class="btn ghost revealBtn" data-i="'+i+'">Show worked solution</button>'+
  '<div class="sol" id="sol'+i+'" style="display:none; margin-top:12px">'+t.w+
@@ -6059,7 +6066,7 @@ renderQuiz2('all');
 /* ================= 9 TUTORIAL ================= */
 const TUT2=[
  {n:'12.5-2',t:'Single-stage extraction of acetic acid',
-  g:'400 kg of a solution containing 35 wt% acetic acid in water is contacted with 400 kg of pure isopropyl ether in a single stage. Calculate the amounts and compositions of the extract and raffinate layers, algebraically and by the lever arm rule. What percentage of the acetic acid is removed?',
+  g:"<b>A single stage extraction<\/b> is performed in which 400 kg of a solution containing 35wt% acetic acid in water is contacted with 400 kg of pure isopropyl ether. Calculate the amounts and compositions of the extracts and raffinate layers. Solve for the amounts both algebraically and by lever arm rule. What percent of acetic acid is removed?",
   s:'Get M first (total mass, x<sub>AM</sub>, x<sub>CM</sub>), plot it, then find the tie line through it by trial and error. Compositions come from the tie line; amounts come from either two simultaneous balances or the lever arm.',
   w:'<div class="eq">M = 400 + 400 = <b>800 kg</b></div>'+
      '<div class="eq" style="margin-top:8px">x<sub>AM</sub> = 400(0.35)/800 = <b>0.175</b> · x<sub>CM</sub> = 400(1.0)/800 = <b>0.50</b></div>'+
@@ -6071,8 +6078,8 @@ const TUT2=[
      '<div class="eq" style="margin-top:8px">→ L ≈ <b>341 kg</b> · V ≈ <b>459 kg</b></div>'+
      '<p class="small muted" style="margin-top:10px">Lever arm check: L/M = length MV / length LV measured on the plot, which should land within a few kg of the algebraic value.</p>',
   a:'Raffinate ≈ 341 kg at 25.6% acid; extract ≈ 459 kg at 11.5% acid. Acid in the extract = 459(0.115) ≈ 52.8 kg of the 140 kg fed, so <b>≈ 38% of the acetic acid is removed</b> in one stage. Use §4.4 to reproduce this in one click.'},
- {n:'12.7-1',t:'Multiple-stage extraction with fresh solvent in each stage',
-  g:'Pure water extracts acetic acid from 400 kg of a feed containing 24 wt% acetic acid in isopropyl ether. (a) With 400 kg of water in one stage, find the percent recovery in the water solution. (b) With a three-stage crossflow system using 133.3 kg of fresh water in each stage, find the overall percent recovery in the combined water outlet.',
+ {n:'12.7-1',t:"Multiple-stage Extraction with Fresh Solvent in Each Stage",
+  g:"Pure water is to be used to extract acetic acid from 400 kg of a feed solution containing 24 wt % acetic acid in isopropyl ether. Use equilibrium data from Appendix A.3.<br>a) If 400 kg of water is used, calculate the percent recovery in the water solution in a one-stage process.<br>b) If a multiple three-stage system is used and 133.3 kg fresh water is used each stage, calculate the overall percent recovery of the acid in the total outlet water. (<i>Hint<\/i>: First, calculate the outlet extract and raffinate streams for the first stage using 400 kg of feed solution and 133 kg of water. For the second stage, 133 kg of water contacts the outlet organic phase from the first stage. For the third stage, 133.3 kg of water contacts the outlet organic phase from the second stage, and so on.)",
   s:'The feed is now the <b>organic</b> phase, so it plots at x<sub>A</sub> = 0.24, x<sub>C</sub> = 0.76 — not on the axis. In part (b) the <b>ether phase</b> from each stage becomes the feed to the next; collect the acid from all three water layers.',
   w:'<div class="eq">(a) M = 800 kg · x<sub>AM</sub> = 96/800 = 0.12 · x<sub>CM</sub> = 304/800 = 0.38</div>'+
      '<div class="eq" style="margin-top:8px">Tie line through M → water layer ≈ 481 kg at x<sub>A</sub> ≈ 0.159</div>'+
@@ -6083,8 +6090,8 @@ const TUT2=[
      '<tr><td>2</td><td class="num">175 kg</td><td class="num">0.162</td><td class="num">322 kg at y_A 0.064</td></tr>'+
      '<tr><td>3</td><td class="num">153 kg</td><td class="num">0.082</td><td class="num">302 kg at y_A 0.026</td></tr></table>',
   a:'(a) ≈ <b>80% recovery</b> with 400 kg of water in one stage. (b) ≈ <b>92% recovery</b> with the same total water split three ways. Splitting the solvent beats dumping it in at once — but note the combined water product is more dilute, which is the crossflow trade-off §2.4 warned about.'},
- {n:'12.7-3',t:'Minimum solvent and countercurrent extraction of acetone',
-  g:'1000 kg/h of an aqueous feed containing 23.5 wt% acetone and 76.5 wt% water is extracted countercurrently with pure MIBK at 289–299 K. The outlet water raffinate is to contain 2.5 wt% acetone. (a) Calculate the minimum solvent rate. (b) Using 1.5 times the minimum, find the number of theoretical stages.',
+ {n:'12.7-3',t:"Minimum solvent and countercurrent extraction of acetone",
+  g:"An aqueous feed solution of 1000 kg/h containing 23.5wt% acetone and 76.5wt% water is being extracted in a countercurrent multistage extraction system using pure methylisobutylketone (MIBK) solvent at 289-299K. The outlet water raffinate will contain 2.5wt% acetone. Use equilibrium data in Appendix A3.<br>a) calculate the minimum solvent that can be used.<br>b) Using the solvent flowrate of 1.5 times the minimum, calculate the number of theoretical stages.",
   s:'This one uses the <b>acetone–water–MIBK</b> data in Appendix A.3, not the acetic-acid data behind the diagrams in this module — plot that envelope first. Then it is the §5.5 procedure followed by the §5.4 stepping.',
   w:'<p class="small muted"><b>(a) Minimum solvent</b></p>'+
      '<ul class="tick"><li>Plot the MIBK envelope and its tie lines; mark L₀ at x<sub>A0</sub> = 0.235, x<sub>C0</sub> = 0.</li>'+
@@ -6097,8 +6104,8 @@ const TUT2=[
      '<li>Locate V₁ on line L<sub>N</sub>M, then the new Δ as the intersection of L₀V₁ and L<sub>N</sub>V<sub>N+1</sub>.</li>'+
      '<li>Step off: L₀ → Δ line → V₁ → tie line → L₁ → Δ line → V₂ … until you pass L<sub>N</sub>.</li></ul>',
   a:'Read your own values off the MIBK diagram — the numbers depend on how you plot Appendix A.3, so no single "correct" figure exists to two decimals. The Δ used must sit <b>closer to V<sub>N+1</sub> than Δ<sub>min</sub></b>; if it does not, you have made an arithmetic slip. Expect the stage count to fall sharply as you move from 1.0 to 1.5 × V<sub>min</sub>.'},
- {n:'12.7-10',t:'Acetone from water — stages, and number of transfer units',
-  g:'Repeat Example 12.7-4 (800 kg/h water with 12 wt% acetone, trichloroethane solvent containing 0.5 wt% acetone, raffinate to 1.0 wt%) but using 1.5 times the minimum solvent rate. (a) Determine the theoretical steps graphically. (b) Calculate the steps analytically. (c) For a packed tower with H_OL = 0.9 m, calculate N_OL and the tower height.',
+ {n:'12.7-10',t:"Extraction of Acetone from Water and Number of Transfer Units",
+  g:"Repeat Example 12.7-4 for the extraction of acetone from water using 1.5 times the minimum solvent flow rate. Do as follows:<br>a) Graphically determine the number of theoretical steps needed.<br>b) Calculate the number of steps using the analytical equation.<br>c) For a packed tower with this system, the height of the transfer unit <i>H<sub>OL<\/sub><\/i> has been estimated as 0.9 m. calculate the number of transfer units <i>N<sub>OL<\/sub><\/i> and the tower height.",
   s:'Nothing changes except V′. Recompute y₂ from the operating-line equation, re-read m₁ and m₂ as tangents to the equilibrium curve, then apply the Kremser and N<sub>OL</sub> equations. More solvent means a lower A, and so fewer steps than 12.7-4.',
   w:'<div class="eq">L′ = 800(1 − 0.12) = <b>704 kg water/h</b></div>'+
      '<div class="eq" style="margin-top:8px">V′ = 1.5(403.2) = <b>604.8 kg solvent/h</b></div>'+
@@ -6109,8 +6116,8 @@ const TUT2=[
      '<div class="eq" style="margin-top:8px">N<sub>OL</sub> = ln[(1−A)R + A]/(1−A) &nbsp;·&nbsp; z = H<sub>OL</sub>N<sub>OL</sub></div>'+
      '<p class="small muted" style="margin-top:10px">Load the <b>Tutorial 12.7-10</b> preset in the §6.4 calculator to reproduce every line of this.</p>',
   a:'(b) <b>N = 5.34 steps</b> analytically — down from 7.46 at 1.3 × V′<sub>min</sub>. (c) <b>N<sub>OL</sub> = 6.21 transfer units</b>, so z = 0.9(6.21) ≈ <b>5.6 m</b> of packing. Extra solvent bought you a much shorter tower and a more dilute extract to distil later.'},
- {n:'Extra',t:'Additional question · one stage versus two',
-  g:'400 kg of a solution containing 35 wt% acetic acid in water is contacted with 400 kg of pure isopropyl ether. (a) Find the amounts and compositions of the extract and raffinate. (b) What percentage of the acetic acid is removed? (c) If two stages are used with the solvent split equally (S₁ = S₂ = 200 kg), find the final raffinate composition and the percentage removed.',
+ {n:'Extra',t:"Additional Question",
+  g:"A single stage liquid liquid extraction is performed in which 400 kg of a solution containing 35 wt% acetic acid (AA) in water (W) is contacted with 400 kg of pure isopropyl ether (IPE).<br><br>a) Calculate the amounts and compositions of the extract and raffinate layers<br>b) What is the percentage of acetic acid removed?<br>c) If two stages are used with the solvent divided equally (S<sub>1<\/sub>= S<sub>2<\/sub> = 200 kg) for the two stages, find the final raffinate composition and the percentage of the acetic acid removed.<br><br><b>Table Q5.<\/b> Tie line equilibrium data for acetic acid, isopropyl ether and water at 20<sup>o<\/sup>C.<div class=\"scroller\"><table class=\"tutq-t\"><tr><th rowspan=\"2\">Tie Line no.<\/th><th colspan=\"3\">Water Layer (wt %)<\/th><th colspan=\"3\">Isopropyl Ether Layer (wt %)<\/th><\/tr><tr><th>Acetic Acid<\/th><th>Water<\/th><th>IPE<\/th><th>Acetic Acid<\/th><th>Water<\/th><th>IPE<\/th><\/tr><tr><td>1<\/td><td>0<\/td><td>98.8<\/td><td>1.2<\/td><td>0<\/td><td>0.6<\/td><td>99.4<\/td><\/tr><tr><td>2<\/td><td>0.7<\/td><td>98.1<\/td><td>1.2<\/td><td>0.2<\/td><td>0.5<\/td><td>99.3<\/td><\/tr><tr><td>3<\/td><td>1.4<\/td><td>97.1<\/td><td>1.5<\/td><td>0.4<\/td><td>0.7<\/td><td>98.9<\/td><\/tr><tr><td>4<\/td><td>2.9<\/td><td>95.5<\/td><td>1.6<\/td><td>0.8<\/td><td>0.8<\/td><td>98.4<\/td><\/tr><tr><td>5<\/td><td>6.4<\/td><td>91.7<\/td><td>1.9<\/td><td>1.9<\/td><td>1.0<\/td><td>97.1<\/td><\/tr><tr><td>6<\/td><td>13.3<\/td><td>84.4<\/td><td>2.3<\/td><td>4.8<\/td><td>1.9<\/td><td>93.3<\/td><\/tr><tr><td>7<\/td><td>25.5<\/td><td>71.1<\/td><td>3.4<\/td><td>11.4<\/td><td>3.9<\/td><td>84.7<\/td><\/tr><tr><td>8<\/td><td>36.7<\/td><td>58.9<\/td><td>4.4<\/td><td>21.6<\/td><td>6.9<\/td><td>71.5<\/td><\/tr><tr><td>9<\/td><td>44.3<\/td><td>45.1<\/td><td>10.6<\/td><td>31.1<\/td><td>10.8<\/td><td>58.1<\/td><\/tr><tr><td>10<\/td><td>46.4<\/td><td>37.1<\/td><td>16.5<\/td><td>36.2<\/td><td>15.1<\/td><td>48.7<\/td><\/tr><\/table><\/div>",
   s:'Part (a) and (b) are 12.5-2 again. For (c), run the single-stage method twice: the <b>raffinate</b> from stage 1 is the feed to stage 2, and the acid removed is the sum from both extracts.',
   w:'<p class="small muted"><b>(a) and (b)</b> — as in problem 12.5-2 above: raffinate ≈ 341 kg at x<sub>A</sub> ≈ 0.256, extract ≈ 459 kg at y<sub>A</sub> ≈ 0.115, ≈ 38% removed.</p>'+
      '<p class="small muted" style="margin-top:12px"><b>(c) Two stages, 200 kg solvent each</b></p>'+
@@ -6123,7 +6130,7 @@ const TUT2=[
 $('#tutBox2').innerHTML=TUT2.map((t,i)=>
  '<div class="acc"><div class="acch"><span class="idx">'+t.n+'</span>'+t.t+'<span class="plus">+</span></div>'+
  '<div class="accb"><div class="pad">'+
- '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Given</span><p class="small" style="margin-top:8px; color:var(--ink)">'+t.g+'</p></div>'+
+ '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Question</span><div class="small tutq" style="margin-top:8px; color:var(--ink)">'+t.g+'</div></div>'+
  '<div class="note" style="margin-bottom:12px"><b>Strategy:</b> '+t.s+'</div>'+
  '<button class="btn ghost revealBtn2" data-i="'+i+'">Show worked solution</button>'+
  '<div class="sol" id="sol2'+i+'" style="display:none; margin-top:12px">'+t.w+
@@ -6765,7 +6772,7 @@ $('#qr_mode').addEventListener('change',dryCombined); dryCombined();
 /* ================= §11 TUTORIAL ================= */
 const DTUT=[
  {n:'9.6-1',t:'Drying time in the constant-rate period',
-  g:'A batch of wet solid is dried on a tray dryer under constant drying conditions, 25.4 mm thick with only the top surface exposed. R_C = 3.0 kg water/h·m², L_S = 7.5 kg dry solid, pan 0.5 × 0.5 m, X₁ = 0.55 and X_c = 0.18 kg free moisture/kg dry solid. Determine the time to dry from X₁ = 0.48 to X₂ = 0.25 under the same conditions.',
+  g:"A batch of wet solid was dried on a tray dryer using constant drying conditions and a thickness of material on the tray of 25.4 mm. Only the top surface was exposed. The drying rate during the constant-rate period, R<sub>C<\/sub> = 3.0 kg water/h.m<sup>2<\/sup>. The mass of dry solid, L<sub>s<\/sub> = 7.5 kg dry solid. The pan was 0.5 m x 0.5 m. The initial free moisture, X<sub>1<\/sub> = 0.55 and the critical moisture content, X<sub>c<\/sub> = 0.18 kg free moisture/kg dry solid. Determine the time to dry a batch of this material from X<sub>1<\/sub> = 0.48 to X<sub>2<\/sub> = 0.25 using the same drying condition.",
   s:'First check where 0.48 and 0.25 sit relative to X_c = 0.18. <b>Both are above it</b>, so the whole run is in the constant-rate period and Eq. 9.6-2 applies with no integration at all.',
   w:'<div class="eq">A = 0.5 × 0.5 = <b>0.25 m²</b></div>'+
      '<div class="eq" style="margin-top:8px">Both X₁ = 0.48 and X₂ = 0.25 &gt; X<sub>c</sub> = 0.18 ✓ constant rate throughout</div>'+
@@ -6773,7 +6780,7 @@ const DTUT=[
      '<div class="eq" style="margin-top:8px">t = 1.725/0.75 = <b>2.30 h</b></div>',
   a:'<b>t = 2.30 h.</b> The X₁ = 0.55 in the problem statement is a distractor — the run you are asked about starts at 0.48. Check it in the §7.7 calculator by setting X₁ = 0.48, X₂ = 0.25, X_c = 0.18.'},
  {n:'9.6-2',t:'Effect of the process variables',
-  g:'For the pan of Example 9.6-3 (0.457 × 0.457 m, air parallel at 6.1 m/s, 65.6 °C, H = 0.010, giving R_C = 3.39 kg/h·m²): (a) predict the effect on R_C if the velocity is only 3.05 m/s; (b) if the gas temperature is raised to 76.7 °C at the same H; (c) the effect on drying time between X₁ and X₂ if the material is 38.1 mm thick instead of 25.4 mm, still in the constant-rate period.',
+  g:"An insoluble wet granular material is dried in a pan 0.457 m x 0.457 m and 25.4 mm deep. The material is 25.4 mm deep in the pan, and the sides and bottom can be considered insulated. Heat transfer is by convection from an air stream flowing to the surface at a velocity of 6.1 m/s. The air is at 65.6<sup>o<\/sup>C and has a humidity of 0.010 kg H2O/kg dry air. Solve the following.<br>(a) Predict the efect on R<sub>c<\/sub> if the velocity is only 3.05 m/s.<br>(b) Predict the efect on R<sub>c<\/sub> if the gas temperature is raised to 76.7<sup>o<\/sup>C and H remains the same.<br>(c) Predict the efect on the time t for drying between moisture contents Xi to X2 if the thickness of material dried is 38.1 mm instead of 25.4 mm and the drying is still in the constant-rate period.",
   s:'Parts (a) and (b) change R_C through h and the driving force. Part (c) changes <b>neither</b> — but it changes L_S/A, and therefore the time. This is §7.5 turned into arithmetic.',
   w:'<p class="small muted"><b>(a) Half the velocity</b></p>'+
      '<div class="eq">G halves, and h ∝ G<sup>0.8</sup>, so R<sub>C2</sub>/R<sub>C1</sub> = (0.5)<sup>0.8</sup> = 0.574</div>'+
@@ -6787,7 +6794,7 @@ const DTUT=[
      '<div class="eq" style="margin-top:8px">L<sub>S</sub>/A rises in proportion to thickness, so t₂/t₁ = 38.1/25.4 = <b>1.50</b></div>',
   a:'(a) R<sub>C</sub> falls to <b>≈ 1.95 kg/h·m²</b>. (b) R<sub>C</sub> rises to <b>≈ 4.11 kg/h·m²</b> — note the driving force widens from 36.7 to 45.5 K even though h drops slightly, because the hotter air is less dense. (c) R<sub>C</sub> unchanged, but the drying time is <b>50% longer</b>. Reproduce (a) and (b) in the §7.4 calculator by editing velocity and temperature.'},
  {n:'9.6-3',t:'Rate and time from the wet-bulb temperature',
-  g:'A granular insoluble solid wet with water is dried in the constant-rate period in a 0.61 × 0.61 m pan, material 25.4 mm deep, sides and bottom insulated. Air flows parallel to the top surface at 3.05 m/s with a dry bulb of 60 °C and a wet bulb of 29.4 °C. The pan holds 11.34 kg dry solid at X₁ = 0.35, to be dried to X₂ = 0.22 kg H₂O/kg dry solid. (a) Predict the drying rate and the time in hours. (b) Predict the time if the depth is increased to 44.5 mm.',
+  g:"A granular insoluble solid material wet with water is being dried in the constant-rate period in a pan 0.61 m x 0.61 m and the depth of material is 25.4 mm. The sides and bottom are insulated. Air flows parallel to the top surface at a velocity of 3.05 m/s and has a dry bulb temperature of 60<sup>o<\/sup>C and wet bulb temperature of 29.4<sup>o<\/sup>C. The pan contains 11.34 kg dry solid having a free moisture content of 0.35 kg H2O/kg dry solid, and the material is to be dried in the constant-rate period to 0.22 kg H2O/kg dry solid.<br>(a) Predict the drying rate and the time needed in hours.<br>(b) Predict the time needed if the depth of material is increased to 44.5 mm.",
   s:'You are given T and T_W directly, so read H off the chart at that pair before computing the humid volume. Then it is the usual chain: v_H → ρ → G → h → R_C → t.',
   w:'<div class="eq">From the chart at T = 60 °C, T<sub>W</sub> = 29.4 °C → H ≈ <b>0.013</b>, λ<sub>W</sub> ≈ 2431 kJ/kg</div>'+
      '<div class="eq" style="margin-top:8px">v<sub>H</sub> = (2.83×10⁻³ + 4.56×10⁻³ × 0.013)(333) ≈ <b>0.962 m³/kg</b></div>'+
@@ -6798,7 +6805,7 @@ const DTUT=[
      '<div class="eq" style="margin-top:8px">(b) t₂ = 2.40 × 44.5/25.4 ≈ <b>4.20 h</b></div>',
   a:'(a) R<sub>C</sub> ≈ <b>1.65 kg H₂O/h·m²</b> and t ≈ <b>2.4 h</b>. (b) With the deeper bed, t ≈ <b>4.2 h</b> — the rate is unchanged, only the inventory of water per m² has grown by 44.5/25.4.'},
  {n:'9.7-1',t:'Numerical integration in the falling-rate period',
-  g:'A wet solid is dried in a tray dryer from X₁ = 0.40 to X₂ = 0.02 kg H₂O/kg dry solid. L_S = 99.8 kg dry solid, top drying area = 4.645 m². The drying-rate curve is Fig. 9.5-1b. (a) Calculate the drying time using numerical integration in the falling-rate period. (b) Determine the time using the straight line through the origin for the falling-rate period.',
+  g:"A wet solid is to be dried in a tray dryer under steady-state conditions from a free moisture content of X<sub>1<\/sub> = 0.40 kg H2O/kg dry solid to X<sub>2<\/sub> = 0.02 kg H2O/kg dry solid. The dry solid weight = 99.8 kg dry solid and the top surface area for drying = 4.645 m<sup>2<\/sup>. The drying-rate curve can be represented by Fig. 9.5-1b (page 577, Geankoplis, 4<sup>th<\/sup> ed).<br>(a) Calculate the time for drying using numerical integration in the falling-rate period.<br>(b) Determine the time for drying using the straight line through the origin for the drying rate in the falling-rate period.",
   s:'L_S/A = 21.5 kg/m², the same as the reference curve. Split at X_c = 0.195. Read R off Fig. 9.5-1b down to X = 0.02 — you will need points below 0.04, where the curve drops steeply.',
   w:'<div class="eq">L<sub>S</sub>/A = 99.8/4.645 = <b>21.5 kg/m²</b></div>'+
      '<p class="small muted" style="margin-top:10px"><b>Constant-rate period, 0.40 → 0.195:</b></p>'+
@@ -6813,7 +6820,7 @@ const DTUT=[
      '<div class="eq">t = [21.5(0.195)/1.51] ln(0.195/0.02) = 2.78(2.28) ≈ <b>6.3 h</b> → total ≈ <b>9.2 h</b></div>',
   a:'(a) ≈ <b>9.6 h</b> in total (2.9 h constant + 6.7 h falling). (b) ≈ <b>9.2 h</b> using the straight line. Drying to 0.02 instead of 0.04 nearly doubles the falling-rate time — read the low-X end of Fig. 9.5-1b carefully, because that is where all the uncertainty lives. Edit the table in §7.6 to add the 0.030 and 0.020 rows and watch the area grow.'},
  {n:'9.7-2',t:'Building the drying curve from raw data',
-  g:'Drying data were obtained in a tray dryer with 0.186 m² of exposed top surface. Bone-dry weight = 3.765 kg. At equilibrium the wet sample weighed 3.955 kg, so 0.190 kg of equilibrium moisture was present. (a) Calculate X for each point and plot X vs t. (b) Measure the slopes, calculate R and plot R vs X. (c) Predict the total time to dry from X = 0.20 to X = 0.04, using numerical integration for the falling-rate period. What are R_C and X_c?',
+  g:"In order to test the feasibility of drying a certain foodstuf, drying data were obtained in a tray dryer with air flow over the top exposed surface having an area of 0.186 m<sup>2<\/sup>. The bone-dry sample weight = 3.765 kg dry solid. At equilibrium after a long period, the wet sample weight = 3.955 kg H2O + solid. Hence, 3.9655 – 3.765, or 0.190, kg of equilibrium moisture was present. The following sample weights vs time were obtained in the drying test.<div class=\"scroller\"><table class=\"tutq-t\"><tr><th>Time, h<\/th><th>Weight, kg<\/th><th>Time, h<\/th><th>Weight, kg<\/th><th>Time, h<\/th><th>Weight, kg<\/th><\/tr><tr><td>0<\/td><td>4.944<\/td><td>2.2<\/td><td>4.554<\/td><td>7.0<\/td><td>4.019<\/td><\/tr><tr><td>0.4<\/td><td>4.885<\/td><td>3.0<\/td><td>4.404<\/td><td>9.0<\/td><td>3.978<\/td><\/tr><tr><td>0.8<\/td><td>4.808<\/td><td>4.2<\/td><td>4.241<\/td><td>12.0<\/td><td>3.955<\/td><\/tr><tr><td>1.4<\/td><td>4.699<\/td><td>5.0<\/td><td>4.150<\/td><td><\/td><td><\/td><\/tr><\/table><\/div>(a) Calculate the free moisture content X kg H2O/kg dry solid for each data point and plot X vs time. (Hint: for 0 h, 4.944 – 0.190 – 3.765 = 0.989 kg free moisture in 3.765 kg dry solid. Hence, X = 0.989/3.765)<br>(b) Measure the slopes, calculate the drying rates R in kg H2O/h.m<sup>2<\/sup>, and plot R vs X.<br>(c) Using the drying-rate curve, predict the total time to dry the sample from X = 0.20 to X = 0.04. Use numerical integration for the falling-rate period. What is the drying rate R<sub>C<\/sub> in the constant-rate period and X<sub>c<\/sub>?",
   s:'Free moisture is measured from the <b>equilibrium</b> weight, not the bone-dry weight: X = (W − 3.955)/3.765. For (b) use the slope of each interval and plot R at the <b>mid-point</b> X of that interval.',
   w:'<div class="eq">X = (W − 3.955)/3.765 &nbsp;·&nbsp; R = −(L<sub>S</sub>/A)(ΔX/Δt) = −20.24 ΔX/Δt</div>'+
      '<table style="margin-top:10px"><tr><th>t, h</th><th class="num">0</th><th class="num">0.4</th><th class="num">0.8</th><th class="num">1.4</th><th class="num">2.2</th><th class="num">3.0</th><th class="num">4.2</th><th class="num">5.0</th><th class="num">7.0</th><th class="num">9.0</th><th class="num">12.0</th></tr>'+
@@ -6825,7 +6832,7 @@ const DTUT=[
      '<div class="eq" style="margin-top:8px">Falling rate 0.12 → 0.04: area ∫dX/R ≈ 0.127 → t = 20.24(0.127) ≈ <b>2.6 h</b></div>',
   a:'R<sub>C</sub> ≈ <b>1.0 kg H₂O/h·m²</b>, X<sub>c</sub> ≈ <b>0.12</b>, and the total time from X = 0.20 to 0.04 is ≈ <b>4.2 h</b> (1.6 h constant + 2.6 h falling). Type the X-mid and R pairs into the §7.6 integrator to check the area — it accepts any six points.'},
  {n:'9.8-2',t:'Surface temperature with radiation and conduction',
-  g:'A granular material wet with water is dried in a 25.4 mm layer in a batch tray pan. The pan bottom is metal with k_M = 43.3 W/m·K and thickness 1.59 mm; the solid has k_S = 1.125 W/m·K. Air flows parallel to the top surface and the bottom metal at 3.05 m/s, 60 °C, H = 0.010. Direct radiation from steam pipes at 104.4 °C falls on the top surface, whose emissivity is 0.94. Estimate the surface temperature and the constant-rate drying rate.',
+  g:"A material is granular and wet with water and is dried in a layer 25.4 mm deep in a batch-tray dryer pan. The pan has a metal bottom having a thermal conductivity of km = 43.3 W/m.K and a thickness of 1.59 mm. The thermal conductivity of the solid is ks = 1.125 W/m.K. The air flows parallel to the top exposed surface and the bottom metal at a velocity of 3.05 m/s and a temperature of 60C and humidity H=0.010 kg H2O/kg dry solid. Direct radiation heat from steam pipes having a surface temperature of 104.4 C falls on the exposed top surface, whose emissivity is 0.94. Estimate the surface temperature and the drying rate for the constant-rate period.",
   s:'Get h_C from the usual correlation first, then U_K from Eq. 9.8-5, then solve Eq. 9.8-9 for T_S by trial and error. Start your guess a few degrees above the wet-bulb temperature.',
   w:'<div class="eq">v<sub>H</sub> ≈ 0.958 m³/kg · ρ ≈ 1.054 · G ≈ 11 580 kg/h·m²</div>'+
      '<div class="eq" style="margin-top:8px">h<sub>C</sub> = 0.0204(11 580)<sup>0.8</sup> ≈ <b>36.4 W/m²K</b></div>'+
@@ -6837,7 +6844,7 @@ const DTUT=[
      '<div class="eq" style="margin-top:8px">R<sub>C</sub> = [(36.4 + 19.9)(60 − 33.9) + 8.7(104.4 − 33.9)]/(2421×10³) × 3600 ≈ <b>3.1 kg/h·m²</b></div>',
   a:'T<sub>S</sub> ≈ <b>33.9 °C</b> — over 6 °C above the wet bulb — and R<sub>C</sub> ≈ <b>3.1 kg H₂O/h·m²</b>, against 1.74 for convection alone. Radiation and conduction have nearly <b>doubled</b> the rate. Load these numbers into the §7.8 solver and toggle "convection only" to see both.'},
  {n:'10.5-1',t:'Cooling tower height at 1.5 × minimum air',
-  g:'A forced-draft countercurrent water cooling tower cools water from 43.3 to 26.7 °C. Air enters the bottom at 23.9 °C with a wet-bulb temperature of 21.1 °C. H_G = 0.533 m for these flow conditions. Liquid-phase resistance is negligible (h_L very large), so use H_y*. Calculate the tower height needed if 1.5 times the minimum air rate is used.',
+  g:"A Forced drat countercurrent water cooling tower is to cool water from 43.3 to 26.7<sup>o<\/sup>C. The air enters the bottom of the tower at 23.9<sup>o<\/sup>C with a wet bulb temperature of 21.1<sup>o<\/sup>C. The value of H<sub>G<\/sub> for the flow conditions is H<sub>G<\/sub>=0.533m. The heat transfer resistance in the liquid phase will be neglected, i,e, h<sub>L<\/sub> is very large. Hence, values of H<sub>y<\/sub><sup>*<\/sup> should be used. Calculate the tower height needed if 1.5 times the minimum air rate is used.",
   s:'With h_L → ∞ the driving force is the <b>enthalpy difference H* − H_y</b> measured vertically to the equilibrium line, not along a tie line. Find the minimum air rate from the operating line that touches the equilibrium curve, then set the slope to 1/1.5 of it.',
   w:'<ul class="tick"><li>Plot the equilibrium enthalpy curve H* vs T<sub>L</sub> for saturated air.</li>'+
      '<li>Fix the bottom of the operating line at T<sub>L</sub> = 26.7 °C with the entering air enthalpy H<sub>y1</sub> at T<sub>W</sub> = 21.1 °C.</li>'+
@@ -6848,7 +6855,7 @@ const DTUT=[
      '<div class="eq" style="margin-top:8px">z = H<sub>G</sub>·N<sub>G</sub> = 0.533 N<sub>G</sub></div>',
   a:'Work N<sub>G</sub> by graphical or numerical integration of 1/(H* − H<sub>y</sub>) between the two air enthalpies, then multiply by H<sub>G</sub> = 0.533 m. Working it through with the Table 10.5-1 enthalpies gives H<sub>y1</sub> ≈ 61 kJ/kg, a limiting slope of ≈ 7850 J/kg·K pinching near 37.8 °C, so at 1.5 × G<sub>min</sub> H<sub>y2</sub> ≈ 148 kJ/kg, <b>N<sub>G</sub> ≈ 3.2</b> and <b>z ≈ 1.7 m</b>. Your answer depends on how you read the saturation-enthalpy curve, so <b>show the table of H* − H<sub>y</sub></b> — that is what earns the marks, not the final metre.'},
  {n:'10.5-2',t:'Minimum air rate and tower height',
-  g:'Water is to be cooled from 110 °F to 85 °F in a packed countercurrent cooling tower using entering air at 85 °F with a wet-bulb temperature of 75 °F. Water flow is 2000 lb_m/h·ft² and air flow 1400 lb_m/h·ft². The overall mass transfer coefficient is K_G a = 6.9 lb mol/h·ft³·atm. (a) Calculate the minimum air rate. (b) Calculate the tower height for the actual air flow of 1400 lb_m/h·ft².',
+  g:"It is planned to cool water from 110<sup>o<\/sup>F to 85<sup>o<\/sup>F in a packed countercurrent water-cooling tower using entering air at 85 <sup>o<\/sup>F with a wet bulb temoerature of 75 <sup>o<\/sup>F. The water flow is 2000 Ib<sub>m<\/sub>/h.ft<sup>2<\/sup> and the air flow is 1400 Ibm/h.ft<sup>2<\/sup>. The overall mass transfer coefficient is K<sub>G<\/sub> a = 6.9 Ib mol/h.ft<sup>3<\/sup>.atm<br>a) Calculate the minimum air rate that can be used<br>b) Calculated the tower height needed if the air flow of 1400 Ib<sub>m<\/sub> air/h.ft<sup>2<\/sup> is used.",
   s:'Same construction as 10.5-1 but in Imperial units. The minimum air rate comes from the operating line that just touches the equilibrium curve at the hot end; the height then follows from N_G and the height of a gas-phase transfer unit derived from K_G a.',
   w:'<ul class="tick"><li>Plot the saturation enthalpy curve over 75–110 °F.</li>'+
      '<li>Locate the bottom of the operating line at T<sub>L</sub> = 85 °F with the enthalpy of air at T<sub>W</sub> = 75 °F.</li>'+
@@ -6861,7 +6868,7 @@ const DTUT=[
 $('#dtutBox').innerHTML=DTUT.map((t,i)=>
  '<div class="acc"><div class="acch"><span class="idx">'+t.n+'</span>'+t.t+'<span class="plus">+</span></div>'+
  '<div class="accb"><div class="pad">'+
- '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Given</span><p class="small" style="margin-top:8px; color:var(--ink)">'+t.g+'</p></div>'+
+ '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Question</span><div class="small tutq" style="margin-top:8px; color:var(--ink)">'+t.g+'</div></div>'+
  '<div class="note" style="margin-bottom:12px"><b>Strategy:</b> '+t.s+'</div>'+
  '<button class="btn ghost revealBtnD" data-i="'+i+'">Show worked solution</button>'+
  '<div class="sol" id="soldd'+i+'" style="display:none; margin-top:12px">'+t.w+
@@ -7248,7 +7255,7 @@ renderQuiz4('all');
 /* ================= §9 TUTORIAL ================= */
 const EVTUT=[
  {n:'Q1',t:'Single effect — find V, L and U',
-  g:'A feed F of 4535 kg/h with 2.0 wt% salt solution at 311 K enters continuously and is concentrated to 3.0 wt%. The evaporator has an area of 69.7 m² and operates at atmospheric pressure. Saturated steam at 383.2 K is supplied. The solution is dilute, so it boils at the same temperature as water. c<sub>p</sub> of the feed = 4.10 kJ/kg·K. Determine V, L and U.',
+  g:"Using a single-effect evaporator, a feed, F with 4535 kg/h wit 2.0 wt% salt solution at 311 K enters continuously to be concentrated to 3.0 wt%. The evaporator with an area of 69.7 m<sup>2<\/sup> is operated at atmospheric pressure. Saturated steam at 383.2 K is supplied for heating. Since solution is dilute, it can be assumed to have the same boiling point as water. The heat capacity of the feed is C<sub>p<\/sub>=4.10 kJ/kg.K. Determine the V, L and U.",
   s:'Mass balances give L and V with no thermodynamics. Then take the datum at T₁ = 100 °C, get q from the heat balance, and back out U from q = UAΔT.',
   w:'<div class="eq">L = 4535(0.02)/0.03 = <b>3023 kg/h</b> · V = 4535 − 3023 = <b>1512 kg/h</b></div>'+
      '<div class="eq" style="margin-top:8px">T₁ = 100 °C (1 atm) · T<sub>S</sub> = 383.2 K = 110 °C · ΔT = 10 K</div>'+
@@ -7257,7 +7264,7 @@ const EVTUT=[
      '<div class="eq" style="margin-top:8px">U = q/(AΔT) = 1 272 000/(69.7 × 10) ≈ <b>1824 W/m²·K</b></div>',
   a:'V = <b>1512 kg/h</b>, L = <b>3023 kg/h</b>, U ≈ <b>1824 W/m²·K</b> (steam rate ≈ 2050 kg/h, economy 0.74).'},
  {n:'Q2',t:'Same evaporator, more feed',
-  g:'With the same area, the same U you just found, the same steam pressure, evaporator pressure and feed temperature, calculate V, L and x<sub>L</sub> if the feed rate is increased to 6804 kg/h.',
+  g:"With the same area as above, same value obtained above, same steam pressure, evaporator pressure, and feed temperature, calculate V, L and X<sub>L<\/sub> (liquid outlet concentration) if F feed rate is increased to 6804 kg/h.",
   s:'A, U and ΔT are unchanged, so <b>q is unchanged</b>. That single realisation is the whole question: use the heat balance backwards to get V, then the solute balance to get x<sub>L</sub>.',
   w:'<div class="eq">q = UAΔT = 1824(69.7)(10) ≈ 1272 kW = 4.58 × 10⁶ kJ/h — the same as Q1</div>'+
      '<div class="eq" style="margin-top:8px">q = VH<sub>V</sub> − Fh<sub>F</sub> = V(2257) + 6804(4.10)(62.2)</div>'+
@@ -7266,7 +7273,7 @@ const EVTUT=[
      '<div class="eq" style="margin-top:8px">x<sub>L</sub> = Fx<sub>F</sub>/L = 6804(0.02)/5549 = <b>0.0245</b></div>',
   a:'V ≈ <b>1255 kg/h</b>, L ≈ <b>5549 kg/h</b>, x<sub>L</sub> ≈ <b>2.45 wt%</b>. More feed through the same surface means <b>less</b> water evaporated — more of the fixed duty goes into sensible heating — so the product comes out weaker.'},
  {n:'Q3',t:'Distilled water for boiler feed',
-  g:'An evaporator with A = 83.6 m² and U = 2270 W/m²·K produces distilled water for boiler feed. Tap water with 400 ppm dissolved solids at 15.6 °C is fed to the evaporator at 1 atm abs. Saturated steam at 115.6 °C is used. Determine the amount of distilled water produced per hour if the outlet liquid contains 800 ppm solids.',
+  g:"An evaporator with an area = 83.6 m<sup>2<\/sup> and U = 2270 W/m<sup>2<\/sup>.K is used to produce distilled water for boiler feed. The feed, tap water with 400 ppm dissolved solids at 15.6°C is fed to the evaporator operated at 1 atm pressure abs. Saturated steam at 115.6°C is used. Determine the amount of distilled water produced per hour if the outlet liquid contains 800 ppm solids.",
   s:'The solute balance fixes the ratio, not the flows: doubling the concentration means <b>half</b> the feed leaves as liquid, so V = L = F/2. Write the heat balance in terms of V alone.',
   w:'<div class="eq">400F = 800L → L = F/2, so V = F/2 and F = 2V</div>'+
      '<div class="eq" style="margin-top:8px">q = UAΔT = 2270(83.6)(115.6 − 100) = <b>2960 kW</b> = 1.066 × 10⁷ kJ/h</div>'+
@@ -7274,7 +7281,7 @@ const EVTUT=[
      '<div class="eq" style="margin-top:8px">1.066 × 10⁷ = V(2257 + 707) = 2964V → V ≈ <b>3595 kg/h</b></div>',
   a:'About <b>3595 kg/h</b> of distilled water. Feed is twice that, 7190 kg/h. Check: putting A = 83.6 m² back through the balance returns U ≈ 2270 W/m²·K, which is the number you were given — a good self-check.'},
  {n:'Q4',t:'Boiling point and BPR from the Dühring chart',
-  g:'Determine the boiling temperature of the solution and the boiling-point rise for: (a) a 30% NaOH solution boiling at P = 172.4 kPa; (b) a 60% NaOH solution boiling at P = 3.45 kPa.',
+  g:"Determine the boiling temperature of the solution and the boiling-point rise, BPR for the following cases.<br>(a) A 30% NaOH solution boiling in an evaporator at P = 172.4 kPa.<br>(b) A 60% NaOH solution boiling in an evaporator at P = 3.45 kPa.",
   s:'Get the boiling point of <b>water</b> at that pressure from the steam tables first. Then enter the Dühring chart on that temperature, read up to the concentration line, and read across.',
   w:'<p class="small muted"><b>(a) 30% NaOH at 172.4 kPa</b></p>'+
      '<div class="eq">Water boils at <b>115.6 °C</b> at 172.4 kPa</div>'+
@@ -7284,7 +7291,7 @@ const EVTUT=[
      '<div class="eq" style="margin-top:8px">From the 60% line: solution boils at ≈ <b>71 °C</b> → BPR ≈ <b>45 °C</b></div>',
   a:'(a) ≈ <b>134 °C</b>, BPR ≈ <b>18 °C</b>. (b) ≈ <b>71 °C</b>, BPR ≈ <b>45 °C</b>. Note how brutal the BPR is at 60% — it removes 45 K from whatever driving force you had, which is exactly why concentrated caustic is evaporated in stages. Check both in the §5.2 calculator.'},
  {n:'Q5',t:'NaOH — find S and U',
-  g:'A single-effect evaporator with A = 37.6 m² concentrates 4536 kg/h of NaOH solution from 10 wt% to 20 wt%. The feed enters at 21.1 °C. Saturated steam at 110 °C is used and the pressure in the vapour space is 51.7 kPa. Determine S and U.',
+  g:"A single-effect evaporator with A = 37.6 m<sup>2<\/sup> is used to concentrate a feed (4536 kg/h) of NaOH solution containing 10 wt% NaOH to 20 wt% solution. The feed enters at 21.1°C. Saturated steam at 110°C is used for heating and pressure in the vapor space of the evaporator is 51.7 kPa. Determine S and U.",
   s:'NaOH means you must account for BPR, and strictly for the heat of solution too — read h<sub>F</sub> and h<sub>L</sub> from the enthalpy–concentration chart. The structure is otherwise identical to Q1.',
   w:'<div class="eq">L = 4536(0.10)/0.20 = <b>2268 kg/h</b> · V = <b>2268 kg/h</b></div>'+
      '<div class="eq" style="margin-top:8px">Water boils at <b>82.1 °C</b> at 51.7 kPa; 20% NaOH gives BPR ≈ 7 °C → T₁ ≈ <b>89 °C</b></div>'+
@@ -7294,7 +7301,7 @@ const EVTUT=[
      '<div class="eq" style="margin-top:8px">U = q/(AΔT) = 1 770 000/(37.6 × 21) ≈ <b>2250 W/m²·K</b></div>',
   a:'S ≈ <b>2860 kg/h</b> and U ≈ <b>2250 W/m²·K</b>, with the BPR of about 7 °C costing you a third of the raw 31 K driving force. These figures use c<sub>p</sub> values in place of the enthalpy–concentration chart, so a chart-based answer will differ by a few percent — use Fig. 8.4-3 if the marks are for that.'},
  {n:'Q6',t:'Effect of feed temperature on steam and area',
-  g:'A single-effect evaporator concentrates 9072 kg/h of 10 wt% NaOH to 50% solids. Saturated steam is at 42 kPa gauge and the vapour space at 20 kPa abs. U = 1988 W/m²·K. Determine S, the steam economy and A for (a) feed at 15.6 °C and (b) feed at 48.9 °C.',
+  g:"A single-effect evaporator is used to concentrate a feed of 9072 kg/h with 10 wt% NaOH solution to a product of 50% solid. The pressure of saturated steam used is 42 kPa (gage) and the pressure in the vapor space of the evaporator is 20 kPa (abs). U = 1988 W/m<sup>2<\/sup>.K. Determine S, steam economy and A if:<br>a. Feed temperature at 15.6<sup>o<\/sup>C<br>b. Feed temperature of 48.9<sup>o<\/sup>C",
   s:'Convert the gauge pressure first: 42 kPa gauge = 143.3 kPa abs → T<sub>S</sub> = 110 °C. The only thing that changes between (a) and (b) is h<sub>F</sub> — so you can see exactly what preheating the feed buys you.',
   w:'<div class="eq">L = 9072(0.10)/0.50 = <b>1814 kg/h</b> · V = <b>7258 kg/h</b></div>'+
      '<div class="eq" style="margin-top:8px">T<sub>S</sub> = 110 °C; water boils at <b>60 °C</b> at 20 kPa; 50% NaOH gives BPR ≈ 36 °C → T₁ ≈ <b>96 °C</b>, ΔT ≈ 14 K</div>'+
@@ -7305,7 +7312,7 @@ const EVTUT=[
      '<tr><td>A</td><td class="num">≈ 191 m²</td><td class="num">≈ 179 m²</td></tr></table>',
   a:'Preheating the feed from 15.6 to 48.9 °C cuts the steam by about <b>6%</b> and the area by about <b>6%</b>, lifting the economy from 0.84 to 0.89. Note the enormous BPR of ~36 °C at 50% NaOH: it leaves only ~14 K of driving force, which is why A is so large. Again these use c<sub>p</sub> rather than the enthalpy chart.'},
  {n:'Q7',t:'Organic colloids — find A and S',
-  g:'A single-effect evaporator concentrates a feed of organic colloids from 5 to 50 wt%. Boiling-point elevation is negligible, c<sub>p</sub> of the feed = 4.06 kJ/kg·K and the feed enters at 15.6 °C. Saturated steam at 101.32 kPa is used and the vapour space is at 15.3 kPa. A total of 4536 kg/h of water is to be evaporated and U = 1988 W/m²·K. Calculate A and S.',
+  g:"A single-effect evaporator is used to concentrate a feed solution of organic colloids from 5 to 50 wt%. The solution has a negligible boiling-point elevation. The heat capacity of the feed, C<sub>p<\/sub> = 4.06 kJ/kg.K. The feed enters at 15.6<sup>o<\/sup>C. Saturated steam at 101.32 kPa is used for heating, and the pressure in the vapor space of evaporator is 15.3 kPa. A total of 4536 kg/h of water is to be evaporated. U = 1988 W/m<sup>2<\/sup>.K. Calculate A and S.",
   s:'You are given V, not F. Work backwards: L = 0.1F and V = 0.9F, so F follows from V. Negligible BPR means T₁ is simply the saturation temperature at 15.3 kPa.',
   w:'<div class="eq">V = 0.9F = 4536 → F = <b>5040 kg/h</b>, L = <b>504 kg/h</b></div>'+
      '<div class="eq" style="margin-top:8px">T<sub>S</sub> = 100 °C (101.32 kPa); T₁ = <b>54.3 °C</b> (15.3 kPa, no BPR); ΔT = <b>45.7 K</b></div>'+
@@ -7317,7 +7324,7 @@ const EVTUT=[
 $('#evtutBox').innerHTML=EVTUT.map((t,i)=>
  '<div class="acc"><div class="acch"><span class="idx">'+t.n+'</span>'+t.t+'<span class="plus">+</span></div>'+
  '<div class="accb"><div class="pad">'+
- '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Given</span><p class="small" style="margin-top:8px; color:var(--ink)">'+t.g+'</p></div>'+
+ '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Question</span><div class="small tutq" style="margin-top:8px; color:var(--ink)">'+t.g+'</div></div>'+
  '<div class="note" style="margin-bottom:12px"><b>Strategy:</b> '+t.s+'</div>'+
  '<button class="btn ghost revealBtnE" data-i="'+i+'">Show worked solution</button>'+
  '<div class="sol" id="solev'+i+'" style="display:none; margin-top:12px">'+t.w+
@@ -7805,8 +7812,8 @@ renderQuiz5('all');
 
 /* ---------- §8 TUTORIAL ---------- */
 const CRTUT=[
- {n:'12.11.1',t:'Crystallization of Ba(NO₃)₂',
-  g:'A hot solution of Ba(NO₃)₂ from an evaporator contains 30.6 kg Ba(NO₃)₂/100 kg H₂O and goes to a crystallizer where it is cooled and Ba(NO₃)₂ crystallizes. On cooling, 10% of the original water evaporates. For a feed of 100 kg total, calculate the yield (a) cooled to 290 K, solubility 8.6 kg/100 kg total water; (b) cooled to 283 K, solubility 7.0 kg/100 kg total water.',
+ {n:'12.11.1',t:"Crystallization of Ba(NO₃)₂",
+  g:"A hot solution of Ba(NO<sub>3<\/sub>)<sub>2<\/sub> from an evaporator contains 30.6 kg Ba(NO<sub>3<\/sub>)<sub>2<\/sub>/100 kg H2O and goes to a crystallizer, where the solution is cooled and Ba(NO<sub>3<\/sub>)<sub>2<\/sub> crystallizes. On cooling, 10% of the original water present evaporates. For a feed solution of 100 kg total, calculate the following:<br>(a) The yield of crystals if the solution is cooled to 290 K (17°C), where the solubility is 8.6 kg Ba(NO<sub>3<\/sub>)<sub>2<\/sub>/100 kg total water.<br>(b) The yield if cooled instead to 283 K, where the solubility is 7.0 kg Ba(NO<sub>3<\/sub>)<sub>2<\/sub>/100 kg total water.",
   s:'The feed is quoted <b>per 100 kg water</b>, not as a wt% of solution — convert first. The crystals are anhydrous, so there is no water of hydration term.',
   w:'<div class="eq">Per 100 kg feed: solute = 30.6/130.6 × 100 = <b>23.43 kg</b>, water = <b>76.57 kg</b></div>'+
      '<div class="eq" style="margin-top:8px">W = 0.10 × 76.57 = <b>7.66 kg</b> → water in mother liquor = 68.91 kg</div>'+
@@ -7815,8 +7822,8 @@ const CRTUT=[
      '<p class="small muted" style="margin-top:10px"><b>(b) at 283 K</b></p>'+
      '<div class="eq">solute in liquor = 0.070 × 68.91 = 4.82 kg → C = 23.43 − 4.82 = <b>18.61 kg</b></div>',
   a:'(a) <b>17.5 kg</b> of Ba(NO₃)₂ crystals, matching the stated 17.47 kg. (b) <b>18.6 kg</b> — cooling a further 7 K adds about 1.1 kg, a 6% gain, which is the whole argument for chilling further if the refrigeration is cheap.'},
- {n:'12.11.2',t:'Dissolving and subsequent crystallization of KCl',
-  g:'1000 kg of KCl is dissolved in enough water to make a saturated solution at 363 K, where solubility is 35 wt% KCl. The solution is cooled to 293 K, where solubility is 25.4 wt%. (a) What weight of water is required, and what weight of KCl crystals is obtained? (b) What weight of crystals if 5% of the original water evaporates on cooling?',
+ {n:'12.11.2',t:"Dissolving and subsequent Crystallization",
+  g:"A batch of 1000 kg of KCl is dissolved in sufficient water to make a saturated solution at 363 K, where the solubility is 35 wt % KCl in water. The solution is cooled to 293 K, at which temperature its solubility is 25.4 wt %.<br>(a) What is the weight of water required for solution and the weight of crystals of KCl obtained?<br>(b) What is the weight of crystals obtained if 5% of the original water evaporates on cooling?",
   s:'Here the solubility is a <b>wt% of solution</b>, not per 100 kg of water — so the balance is written on total solution. KCl crystallises anhydrous.',
   w:'<div class="eq">Total solution = 1000/0.35 = 2857 kg → water = <b>1857 kg</b></div>'+
      '<p class="small muted" style="margin-top:10px"><b>(a) no evaporation</b></p>'+
@@ -7825,8 +7832,8 @@ const CRTUT=[
      '<div class="eq">W = 0.05 × 1857 = 92.9 kg → total = 2764 kg</div>'+
      '<div class="eq" style="margin-top:8px">1000 − C = 0.254(2764 − C) → 297.9 = 0.746C → C = <b>399 kg</b></div>',
   a:'(a) <b>1857 kg water</b> and <b>368 kg crystals</b>. (b) <b>399 kg crystals</b>. Both match the answer key exactly. Evaporating 5% of the water lifts the yield by 31 kg — an 8% gain.'},
- {n:'12.11.3',t:'Crystallization of MgSO₄·7H₂O',
-  g:'A hot solution containing 1000 kg of MgSO₄ and water at 30 wt% MgSO₄ is cooled to 288.8 K, where crystals of MgSO₄·7H₂O precipitate. The solubility at 288.8 K is 24.5 wt% anhydrous MgSO₄ in the solution. Calculate the yield of crystals if 5% of the original water evaporates on cooling.',
+ {n:'12.11.3',t:"Crystallization of MgSO₄.7H₂O",
+  g:"A hot solution containing 1000 kg of MgSO<sub>4<\/sub> and water having a concentration of 30 wt% MgSO<sub>4<\/sub> is cooled to 288.8K where crystals of MgSO<sub>4<\/sub>.7H<sub>2<\/sub>O are precipated. The solubility at 288.8K is 24.5wt% anhydrous MgSO<sub>4<\/sub> in the solution. Calculate the yield of crystals obtained if 5 % of the original water in the system evaporates on cooling.",
   s:'This is the one with a <b>hydrate</b>. Each kilogram of crystal carries away only 120.4/246.5 = 0.488 kg of MgSO₄ — the rest is water of hydration, which must leave the water balance too.',
   w:'<div class="eq">MgSO₄ = 300 kg, water = 700 kg · W = 0.05 × 700 = <b>35 kg</b></div>'+
      '<div class="eq" style="margin-top:8px">Total balance: S = 1000 − 35 − C = 965 − C</div>'+
@@ -7834,8 +7841,8 @@ const CRTUT=[
      '<div class="eq" style="margin-top:8px">300 = 0.4884C + 236.4 − 0.245C → 63.6 = 0.2435C</div>'+
      '<div class="eq" style="margin-top:8px">C = <b>261 kg</b> of MgSO₄·7H₂O · S = <b>704 kg</b></div>',
   a:'About <b>261 kg</b> of MgSO₄·7H₂O crystals. Note that this recovers 0.488 × 261 = 127 kg of MgSO₄, only 42% of the 300 kg fed — hydrates look like a good yield by mass while recovering far less solute than you would think.'},
- {n:'12.12.1',t:'Growth and nucleation rate in an MSMPR crystallizer',
-  g:'Slurry density 169 g/L, crystal density ρ = 1.65 g/cm³, residence time τ = 6.57 h, shape factor α = 0.98, with the screen analysis given in §6.2. (a) Calculate the population density, growth rate and nucleation rate, and the average size Lₐ. (b) Predict the cumulative weight fraction against size L and compare with the experimental values.',
+ {n:'12.12.1',t:"Growth and Nucleation Rate in MSMPR Crystallizer",
+  g:"Experimental data were obtained for and MSMPR crystallizer (S2). The slurry density is 169 g/L, the crystal density <i>ρ<\/i> is 1.65 g/m3, the residence time <i>τ<\/i> is 6.57 h, and the shape factor <i>α<\/i> is 0.98. The screen analysis of the crystals is as follows:<div class=\"scroller\"><table class=\"tutq-t\"><tr><th>Mesh<\/th><th>Wt %<\/th><th>Mesh<\/th><th>Wt %<\/th><\/tr><tr><td>-14,+20<\/td><td>4.5<\/td><td>-35,+48<\/td><td>31.5<\/td><\/tr><tr><td>-20,+28<\/td><td>14.5<\/td><td>-48,+65<\/td><td>15.5<\/td><\/tr><tr><td>-28,+35<\/td><td>24.0<\/td><td>-65,+100<\/td><td>7.5<\/td><\/tr><tr><td><\/td><td><\/td><td>-100<\/td><td>2.5<\/td><\/tr><\/table><\/div>Using these data, do as follows:<br>(a) Calculate the population density, growth rate, and nucleation rate. Also calculate the average size <i>L<sub>a<\/sub><\/i>.<br>(b) Using these calculated values, predict the cumulative weight fraction versus size <i>L<\/i> from the experimental value <i>G<\/i> and <i>τ<\/i>. Compare the predicted and experimental values.",
   s:'For each screen cut get L<sub>av</sub>, ΔL and the mass per litre, then n = m/(αρL<sub>av</sub>³ΔL). Plot ln n against L<sub>av</sub>, fit a straight line, and read G off the slope and n⁰ off the intercept.',
   w:'<div class="eq">n = m<sub>cut</sub>/(α ρ L<sub>av</sub>³ ΔL) for each of the six cuts</div>'+
      '<div class="eq" style="margin-top:8px">Least-squares fit of ln n vs L<sub>av</sub>: slope = −9.11 /mm</div>'+
@@ -7853,7 +7860,7 @@ const CRTUT=[
 $('#crtutBox').innerHTML=CRTUT.map((t,i)=>
  '<div class="acc"><div class="acch"><span class="idx">'+t.n+'</span>'+t.t+'<span class="plus">+</span></div>'+
  '<div class="accb"><div class="pad">'+
- '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Given</span><p class="small" style="margin-top:8px; color:var(--ink)">'+t.g+'</p></div>'+
+ '<div class="card" style="background:var(--panel-2); margin-bottom:12px"><span class="chip cB">Question</span><div class="small tutq" style="margin-top:8px; color:var(--ink)">'+t.g+'</div></div>'+
  '<div class="note" style="margin-bottom:12px"><b>Strategy:</b> '+t.s+'</div>'+
  '<button class="btn ghost revealBtnC" data-i="'+i+'">Show worked solution</button>'+
  '<div class="sol" id="solcr'+i+'" style="display:none; margin-top:12px">'+t.w+
